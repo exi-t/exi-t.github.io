@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Adil Maralbayev — DevOps / DevSecOps Engineer</title>
+<meta name="description" content="DevOps / DevSecOps Engineer. On-premise Kubernetes, GitLab CI/CD with security gates, Ansible/Terraform IaC, PostgreSQL HA and observability across 200+ VMs.">
+<meta name="author" content="Adil Maralbayev">
+<meta property="og:title" content="Adil Maralbayev — DevOps / DevSecOps Engineer">
+<meta property="og:description" content="On-premise Kubernetes, secure CI/CD, IaC, and 99.9%+ uptime across 30+ production systems.">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚙️</text></svg>">
+<style>
+:root{
+  --bg:#0b0f14;
+  --bg-soft:#111820;
+  --panel:#141c26;
+  --line:#1f2b38;
+  --line-soft:#18232f;
+  --fg:#e6edf3;
+  --fg-dim:#9bb0c3;
+  --fg-mute:#6b8299;
+  --accent:#3ddc97;
+  --accent-2:#4aa8ff;
+  --accent-3:#ffb454;
+  --danger:#ff6b6b;
+  --mono:ui-monospace,"SF Mono",SFMono-Regular,Menlo,Consolas,"Liberation Mono",monospace;
+  --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  --maxw:1080px;
+  --r:10px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--fg);
+  font-family:var(--sans);
+  font-size:16px;
+  line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+  background-image:
+    radial-gradient(circle at 15% -10%, rgba(61,220,151,.07), transparent 45%),
+    radial-gradient(circle at 85% 0%, rgba(74,168,255,.07), transparent 40%);
+  background-attachment:fixed;
+}
+a{color:var(--accent-2);text-decoration:none}
+a:hover{text-decoration:underline}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 22px}
+
+/* ---------- nav ---------- */
+nav{
+  position:sticky;top:0;z-index:50;
+  background:rgba(11,15,20,.82);
+  backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--line-soft);
+}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:58px;gap:18px}
+.brand{font-family:var(--mono);font-size:.9rem;color:var(--fg);font-weight:600;letter-spacing:.02em;white-space:nowrap}
+.brand .sig{color:var(--accent)}
+.navlinks{display:flex;gap:20px;overflow-x:auto;scrollbar-width:none}
+.navlinks::-webkit-scrollbar{display:none}
+.navlinks a{
+  font-family:var(--mono);font-size:.8rem;color:var(--fg-mute);
+  text-decoration:none;white-space:nowrap;padding:4px 0;
+  border-bottom:1px solid transparent;transition:color .15s,border-color .15s;
+}
+.navlinks a:hover{color:var(--accent);border-bottom-color:var(--accent);text-decoration:none}
+
+/* ---------- hero ---------- */
+header{padding:72px 0 56px}
+.term{
+  border:1px solid var(--line);
+  border-radius:var(--r);
+  background:linear-gradient(180deg,var(--panel),var(--bg-soft));
+  overflow:hidden;
+  box-shadow:0 18px 50px rgba(0,0,0,.4);
+}
+.term-bar{
+  display:flex;align-items:center;gap:8px;
+  padding:10px 14px;background:#0e151d;border-bottom:1px solid var(--line);
+}
+.dot{width:11px;height:11px;border-radius:50%;display:inline-block}
+.d1{background:#ff5f57}.d2{background:#febc2e}.d3{background:#28c840}
+.term-title{font-family:var(--mono);font-size:.75rem;color:var(--fg-mute);margin-left:8px}
+.term-body{padding:30px 26px 32px}
+.prompt{font-family:var(--mono);font-size:.85rem;color:var(--fg-mute);margin-bottom:14px}
+.prompt .u{color:var(--accent)}
+.prompt .p{color:var(--accent-2)}
+h1{
+  margin:0 0 6px;font-size:clamp(1.9rem,5vw,3rem);line-height:1.12;
+  letter-spacing:-.02em;font-weight:700;
+}
+.role{
+  font-family:var(--mono);color:var(--accent);
+  font-size:clamp(.9rem,2.4vw,1.1rem);margin:0 0 20px;font-weight:500;
+}
+.cursor{display:inline-block;width:9px;height:1.05em;background:var(--accent);
+  vertical-align:-2px;margin-left:3px;animation:blink 1.1s steps(2) infinite}
+@keyframes blink{0%,49%{opacity:1}50%,100%{opacity:0}}
+.lede{color:var(--fg-dim);max-width:66ch;margin:0 0 26px;font-size:1.02rem}
+.lede strong{color:var(--fg);font-weight:600}
+.cta{display:flex;flex-wrap:wrap;gap:12px}
+.btn{
+  display:inline-flex;align-items:center;gap:8px;
+  font-family:var(--mono);font-size:.85rem;
+  padding:10px 18px;border-radius:8px;text-decoration:none;
+  border:1px solid var(--line);color:var(--fg-dim);background:transparent;
+  transition:border-color .15s,color .15s,background .15s,transform .15s;
+}
+.btn:hover{border-color:var(--accent);color:var(--accent);text-decoration:none;transform:translateY(-1px)}
+.btn.primary{background:var(--accent);color:#06231a;border-color:var(--accent);font-weight:600}
+.btn.primary:hover{background:#5df0b0;color:#06231a;border-color:#5df0b0}
+
+/* ---------- metrics ---------- */
+.metrics{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+  gap:1px;background:var(--line);border:1px solid var(--line);
+  border-radius:var(--r);overflow:hidden;margin-top:34px;
+}
+.metric{background:var(--bg-soft);padding:20px 16px;text-align:center}
+.metric b{display:block;font-family:var(--mono);font-size:1.5rem;color:var(--accent);
+  font-weight:700;letter-spacing:-.02em}
+.metric span{display:block;font-size:.75rem;color:var(--fg-mute);margin-top:5px;
+  text-transform:uppercase;letter-spacing:.07em}
+
+/* ---------- sections ---------- */
+section{padding:56px 0;border-top:1px solid var(--line-soft)}
+h2{
+  font-family:var(--mono);font-size:1.05rem;margin:0 0 6px;
+  color:var(--fg);font-weight:600;letter-spacing:.01em;
+}
+h2::before{content:"## ";color:var(--accent)}
+.sub{color:var(--fg-mute);font-size:.88rem;margin:0 0 30px;font-family:var(--mono)}
+
+/* ---------- skills ---------- */
+.skills{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:16px}
+.card{
+  background:var(--panel);border:1px solid var(--line);
+  border-radius:var(--r);padding:20px;
+  transition:border-color .18s,transform .18s;
+}
+.card:hover{border-color:#2b4256;transform:translateY(-2px)}
+.card h3{
+  margin:0 0 14px;font-size:.82rem;font-family:var(--mono);
+  color:var(--accent-3);text-transform:uppercase;letter-spacing:.09em;font-weight:600;
+}
+.tags{display:flex;flex-wrap:wrap;gap:7px}
+.tag{
+  font-family:var(--mono);font-size:.74rem;padding:4px 9px;
+  background:#0e1620;border:1px solid var(--line);border-radius:5px;color:var(--fg-dim);
+}
+
+/* ---------- timeline ---------- */
+.job{
+  border-left:2px solid var(--line);padding-left:26px;position:relative;
+  margin-bottom:38px;
+}
+.job:last-child{margin-bottom:0}
+.job::before{
+  content:"";position:absolute;left:-7px;top:6px;width:12px;height:12px;
+  border-radius:50%;background:var(--accent);border:3px solid var(--bg);
+}
+.job.past::before{background:var(--fg-mute)}
+.job-head{display:flex;flex-wrap:wrap;justify-content:space-between;gap:6px;align-items:baseline}
+.job-head h3{margin:0;font-size:1.12rem;font-weight:650}
+.job-when{font-family:var(--mono);font-size:.78rem;color:var(--accent);white-space:nowrap}
+.job.past .job-when{color:var(--fg-mute)}
+.job-co{color:var(--fg-dim);font-size:.9rem;margin:2px 0 16px}
+.job ul{margin:0;padding:0;list-style:none;display:grid;gap:11px}
+.job li{
+  position:relative;padding-left:20px;color:var(--fg-dim);font-size:.94rem;
+}
+.job li::before{
+  content:"▸";position:absolute;left:0;top:0;color:var(--accent);font-size:.8rem;
+}
+.job li strong{color:var(--fg);font-weight:600}
+mark{background:rgba(61,220,151,.14);color:var(--accent);padding:0 4px;border-radius:3px;font-weight:600}
+
+/* ---------- projects ---------- */
+.projects{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px}
+.proj{
+  background:var(--panel);border:1px solid var(--line);border-radius:var(--r);
+  padding:22px;display:flex;flex-direction:column;gap:10px;
+  transition:border-color .18s,transform .18s;
+}
+.proj:hover{border-color:var(--accent);transform:translateY(-2px)}
+.proj .ic{font-size:1.4rem;line-height:1}
+.proj h3{margin:0;font-size:1rem;font-weight:650}
+.proj p{margin:0;color:var(--fg-dim);font-size:.9rem}
+.proj .meta{
+  margin-top:auto;padding-top:10px;border-top:1px solid var(--line);
+  font-family:var(--mono);font-size:.74rem;color:var(--fg-mute);
+}
+
+/* ---------- edu + contact ---------- */
+.edu{
+  background:var(--panel);border:1px solid var(--line);border-radius:var(--r);
+  padding:22px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px;align-items:baseline;
+}
+.edu h3{margin:0;font-size:1.02rem}
+.edu p{margin:4px 0 0;color:var(--fg-dim);font-size:.9rem}
+.edu .when{font-family:var(--mono);font-size:.78rem;color:var(--fg-mute)}
+
+.contact{text-align:center;padding:64px 0 30px}
+.contact h2{display:inline-block;text-align:left}
+.contact .sub{margin-bottom:26px}
+.contact-links{display:flex;flex-wrap:wrap;gap:12px;justify-content:center}
+
+footer{
+  border-top:1px solid var(--line-soft);padding:26px 0 40px;
+  font-family:var(--mono);font-size:.75rem;color:var(--fg-mute);
+  display:flex;flex-wrap:wrap;gap:10px;justify-content:space-between;
+}
+.status{display:inline-flex;align-items:center;gap:7px}
+.pulse{
+  width:8px;height:8px;border-radius:50%;background:var(--accent);
+  box-shadow:0 0 0 0 rgba(61,220,151,.6);animation:pulse 2.2s infinite;
+}
+@keyframes pulse{
+  0%{box-shadow:0 0 0 0 rgba(61,220,151,.55)}
+  70%{box-shadow:0 0 0 9px rgba(61,220,151,0)}
+  100%{box-shadow:0 0 0 0 rgba(61,220,151,0)}
+}
+
+/* reveal */
+.rv{opacity:0;transform:translateY(14px);transition:opacity .5s ease,transform .5s ease}
+.rv.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){
+  .rv{opacity:1;transform:none;transition:none}
+  .cursor,.pulse{animation:none}
+  html{scroll-behavior:auto}
+}
+@media (max-width:640px){
+  header{padding:44px 0 36px}
+  .term-body{padding:24px 18px 26px}
+  section{padding:44px 0}
+  .navlinks{gap:14px}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <div class="brand"><span class="sig">~/</span>adil-maralbayev</div>
+    <div class="navlinks">
+      <a href="#skills">skills</a>
+      <a href="#experience">experience</a>
+      <a href="#projects">projects</a>
+      <a href="#education">education</a>
+      <a href="#contact">contact</a>
+      <a href="https://github.com/exi-t" target="_blank" rel="noopener">github ↗</a>
+    </div>
+  </div>
+</nav>
+
+<header>
+  <div class="wrap">
+    <div class="term">
+      <div class="term-bar">
+        <span class="dot d1"></span><span class="dot d2"></span><span class="dot d3"></span>
+        <span class="term-title">adil@production — zsh</span>
+      </div>
+      <div class="term-body">
+        <div class="prompt"><span class="u">adil@prod</span>:<span class="p">~</span>$ whoami</div>
+        <h1>Adil Maralbayev<span class="cursor"></span></h1>
+        <p class="role">DevOps / DevSecOps Engineer · Astana, Kazakhstan</p>
+        <p class="lede">
+          I build and run <strong>on-premise production infrastructure</strong> from bare metal upward —
+          <strong>200+ virtual machines</strong> across <strong>15+ hypervisors</strong> and
+          <strong>15+ highly available Kubernetes clusters</strong>, serving
+          <strong>30+ B2B and B2G systems</strong> at <strong>99.9%+ uptime</strong>, including
+          government services used Kazakhstan-wide. Security is a pipeline stage, not an afterthought.
+        </p>
+        <div class="cta">
+          <a class="btn primary" href="mailto:madil6583@gmail.com">→ Get in touch</a>
+          <a class="btn" href="https://github.com/exi-t" target="_blank" rel="noopener">GitHub</a>
+          <a class="btn" href="https://www.linkedin.com/in/adil-maralbayev-769853280/" target="_blank" rel="noopener">LinkedIn</a>
+          <a class="btn" href="Adil_Maralbayev_DevOps_Engineer.pdf" download>Download CV</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="metrics">
+      <div class="metric"><b>15+</b><span>K8s clusters</span></div>
+      <div class="metric"><b>200+</b><span>Virtual machines</span></div>
+      <div class="metric"><b>30+</b><span>Prod systems</span></div>
+      <div class="metric"><b>99.9%</b><span>Uptime</span></div>
+      <div class="metric"><b>~50%</b><span>Faster CI builds</span></div>
+    </div>
+  </div>
+</header>
+
+<section id="skills" class="rv">
+  <div class="wrap">
+    <h2>Technical Skills</h2>
+    <p class="sub">// the stack I run production on</p>
+    <div class="skills">
+
+      <div class="card">
+        <h3>Containers &amp; Orchestration</h3>
+        <div class="tags">
+          <span class="tag">Kubernetes</span><span class="tag">kubeadm</span>
+          <span class="tag">HA control plane</span><span class="tag">Helm</span>
+          <span class="tag">kubectl</span><span class="tag">Docker</span>
+          <span class="tag">Docker Swarm</span><span class="tag">containerd</span>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>CI/CD &amp; DevSecOps</h3>
+        <div class="tags">
+          <span class="tag">GitLab CI/CD</span><span class="tag">Build caching</span>
+          <span class="tag">Secret scanning</span><span class="tag">gitleaks</span>
+          <span class="tag">Trivy</span><span class="tag">SAST</span>
+          <span class="tag">Image scanning</span><span class="tag">Env separation</span>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>IaC &amp; Automation</h3>
+        <div class="tags">
+          <span class="tag">Ansible</span><span class="tag">Terraform</span>
+          <span class="tag">Helm charts</span><span class="tag">Bash</span>
+          <span class="tag">Go</span><span class="tag">Python</span>
+          <span class="tag">n8n</span><span class="tag">Claude Code</span>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>Infrastructure &amp; Virtualisation</h3>
+        <div class="tags">
+          <span class="tag">Bare metal</span><span class="tag">Proxmox VE</span>
+          <span class="tag">XCP-ng</span><span class="tag">Xen Orchestra</span>
+          <span class="tag">VMware Cloud Director</span><span class="tag">Ubuntu</span>
+          <span class="tag">RHEL-based</span>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>Networking &amp; Security</h3>
+        <div class="tags">
+          <span class="tag">DMZ segmentation</span><span class="tag">VLANs</span>
+          <span class="tag">nftables</span><span class="tag">HAProxy</span>
+          <span class="tag">Nginx</span><span class="tag">VPN</span>
+          <span class="tag">SSH hardening</span><span class="tag">PAM</span>
+          <span class="tag">auditd</span><span class="tag">TLS / PKI</span>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>Databases</h3>
+        <div class="tags">
+          <span class="tag">PostgreSQL</span><span class="tag">Patroni HA</span>
+          <span class="tag">Replication</span><span class="tag">WAL archiving</span>
+          <span class="tag">pgBackRest</span><span class="tag">TimescaleDB</span>
+          <span class="tag">Query tuning</span>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>Observability</h3>
+        <div class="tags">
+          <span class="tag">Prometheus</span><span class="tag">Grafana</span>
+          <span class="tag">Alertmanager</span><span class="tag">Node exporter</span>
+          <span class="tag">Blackbox</span><span class="tag">cAdvisor</span>
+          <span class="tag">Elasticsearch</span><span class="tag">Logstash</span>
+          <span class="tag">Kibana</span>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>Backup &amp; DR</h3>
+        <div class="tags">
+          <span class="tag">Veeam Agent</span><span class="tag">Vinchin</span>
+          <span class="tag">Proxmox Backup Server</span><span class="tag">PITR</span>
+          <span class="tag">Restore drills</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section id="experience" class="rv">
+  <div class="wrap">
+    <h2>Experience</h2>
+    <p class="sub">// what I actually shipped</p>
+
+    <div class="job">
+      <div class="job-head">
+        <h3>DevOps / DevSecOps Engineer</h3>
+        <span class="job-when">July 2023 — Present</span>
+      </div>
+      <p class="job-co">Hardcode · Astana, Kazakhstan</p>
+      <ul>
+        <li>Designed and delivered on-premise production infrastructure from bare metal upward — hypervisors, VMs, network segmentation, storage, backup and monitoring — growing the estate to <mark>200+ VMs across 15+ hypervisors</mark> and supporting <strong>30+ production customer systems</strong> at <mark>99.9%+ uptime</mark>.</li>
+        <li>Reduced GitLab CI/CD pipeline build time by <mark>~50%</mark> through layered Docker build caching, dependency caches and a shared runner strategy — cutting delivery feedback loops for development teams.</li>
+        <li>Embedded <strong>security gates directly into CI/CD</strong> as mandatory pipeline stages — automated secret detection (passwords, API keys, private keys, tokens), container image vulnerability scanning and configuration linting — preventing credentials and vulnerable images from ever reaching build artifacts or production registries.</li>
+        <li>Prepared and successfully certified <strong>two government projects</strong> against Kazakhstan information security requirements as <mark>third-class (K3) information systems</mark>, verified by attestation testing of the State Technical Service. Owned the full cycle: gap analysis, OS and application hardening, evidence and documentation package, coordination with SOC and auditors, and remediation of all findings.</li>
+        <li>Deployed and operated <mark>15+ highly available Kubernetes clusters</mark> on on-premise infrastructure <strong>end to end and independently</strong> — 15–25 nodes each across 2–3 physical servers, with multi-master control plane, external etcd, keepalived VIP load balancing, CNI, ingress and persistent storage — with no managed cloud control plane to fall back on.</li>
+        <li>Scaled production Kubernetes clusters horizontally, adding and safely draining/removing worker nodes with <mark>zero downtime</mark> to match workload growth and decommission hardware, including certificate rotation and control-plane maintenance.</li>
+        <li>Hardened the Linux estate to security-baseline standard: SSH hardening, PAM policies, auditd rule sets, kernel and sysctl tuning, firewall policy and least-privilege access control — rolled out consistently across all stands via Ansible.</li>
+        <li>Designed network segmentation and <strong>DMZ zoning</strong> separating public-facing entry points from application and database tiers, with controlled ingress/egress, reverse proxies and VPN-only administrative access.</li>
+        <li>Administered PostgreSQL in production: HA clustering and replication, security configuration (network ACLs, <code>pg_hba</code> policy, role separation, TLS) and performance tuning — stabilising high-traffic production databases.</li>
+        <li>Built enterprise backup and DR with Veeam, Vinchin and Proxmox Backup Server, plus PostgreSQL logical and physical backups with WAL archiving and point-in-time recovery — regular restore drills with a <mark>100% successful restore record</mark>.</li>
+        <li>Implemented full-stack monitoring and observability — Prometheus, Grafana, Alertmanager with Node/Blackbox/cAdvisor/SQL exporters, centralised ELK logging and n8n alert routing — cutting incident response time by <mark>40–50%</mark>.</li>
+        <li>Standardised infrastructure with IaC (Ansible roles and playbooks, Terraform provisioning), reducing manual operational work by <mark>~70%</mark> and eliminating configuration drift.</li>
+        <li>Automated recurring operational work with <strong>Go, Bash and Python</strong> tooling — health checks, backup verification, certificate expiry monitoring and bulk fleet operations.</li>
+        <li>Adopted <strong>Claude Code and LLM-assisted engineering</strong> as a working part of the delivery process for automation scripting, IaC authoring, log and incident analysis, and introduced AI-assisted diagnostic workflows to colleagues.</li>
+      </ul>
+    </div>
+
+    <div class="job past">
+      <div class="job-head">
+        <h3>Backend Developer (Go)</h3>
+        <span class="job-when">2022 — July 2023</span>
+      </div>
+      <p class="job-co">Hardcode · Astana, Kazakhstan</p>
+      <ul>
+        <li>Developed backend services in Go, gaining a working understanding of web application architecture, request lifecycle and common failure modes — applied since as a DevOps engineer to diagnose application-level incidents quickly and collaborate effectively with backend and frontend teams.</li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+<section id="projects" class="rv">
+  <div class="wrap">
+    <h2>Key Projects</h2>
+    <p class="sub">// selected work</p>
+    <div class="projects">
+
+      <div class="proj">
+        <div class="ic">🛡️</div>
+        <h3>Government IS Certification (K3)</h3>
+        <p>Led infrastructure preparation for two state systems through Kazakhstan's information security attestation as third-class information systems — hardening, access control, documentation and regulator coordination. Both passed.</p>
+        <div class="meta">hardening · auditd · PAM · compliance</div>
+      </div>
+
+      <div class="proj">
+        <div class="ic">☸️</div>
+        <h3>On-Premise HA Kubernetes Platform</h3>
+        <p>Built and operated 15+ multi-master Kubernetes clusters (15–25 nodes each) on company hardware — HA control plane, load balancing, ingress, persistent storage, GitLab CI/CD delivery and Helm-based release management.</p>
+        <div class="meta">kubeadm · etcd · keepalived · Helm</div>
+      </div>
+
+      <div class="proj">
+        <div class="ic">🔐</div>
+        <h3>Secure CI/CD Pipeline Programme</h3>
+        <p>Rebuilt GitLab pipelines for Docker Swarm and Kubernetes with build caching (~50% faster builds), mandatory secret-scanning and image-scanning stages, Ansible-driven deployment and strict environment separation.</p>
+        <div class="meta">GitLab CI · Trivy · gitleaks · Ansible</div>
+      </div>
+
+      <div class="proj">
+        <div class="ic">📊</div>
+        <h3>Observability &amp; Alerting Stack</h3>
+        <p>Rolled out Prometheus, Grafana, Alertmanager and centralised ELK logging across all stands, with automated alert routing via n8n — turning silent failures into actionable alerts and cutting response time 40–50%.</p>
+        <div class="meta">Prometheus · Grafana · ELK · n8n</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section id="education" class="rv">
+  <div class="wrap">
+    <h2>Education</h2>
+    <p class="sub">// background</p>
+    <div class="edu">
+      <div>
+        <h3>Astana IT University (AITU)</h3>
+        <p>Bachelor's in Cybersecurity · GPA 3.5 / 4.0 · Astana, Kazakhstan</p>
+      </div>
+      <span class="when">Sep 2021 — Jun 2024</span>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="contact rv">
+  <div class="wrap">
+    <h2>Contact</h2>
+    <p class="sub">// open to DevOps / DevSecOps / SRE roles</p>
+    <div class="contact-links">
+      <a class="btn primary" href="mailto:madil6583@gmail.com">madil6583@gmail.com</a>
+      <a class="btn" href="tel:+77027002809">+7 702 700 2809</a>
+      <a class="btn" href="https://github.com/exi-t" target="_blank" rel="noopener">github.com/exi-t</a>
+      <a class="btn" href="https://www.linkedin.com/in/adil-maralbayev-769853280/" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="btn" href="Adil_Maralbayev_DevOps_Engineer.pdf" download>Download CV</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap" style="display:flex;flex-wrap:wrap;gap:10px;justify-content:space-between;width:100%">
+    <span class="status"><span class="pulse"></span> All systems operational</span>
+    <span>&copy; <span id="yr">2026</span> Adil Maralbayev · built &amp; deployed on GitHub Pages</span>
+  </div>
+</footer>
+
+<script>
+document.getElementById('yr').textContent = new Date().getFullYear();
+
+// reveal-on-scroll
+var io = new IntersectionObserver(function(entries){
+  entries.forEach(function(e){
+    if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+  });
+}, {rootMargin:'0px 0px -60px 0px', threshold:0.05});
+document.querySelectorAll('.rv').forEach(function(el){ io.observe(el); });
+</script>
+
+</body>
+</html>
